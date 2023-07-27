@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<customers>
+  <customer customer_id="CUSID1464450167">
+    <firstname>Ashmin</firstname>
+    <surname>Karki</surname>
+    <email>ashmin.karki1996@gmail.com</email>
+    <password>ashmin1996</password>
+    <contact>04 20684569</contact>
+  </customer>
+<customer customer_id="CUSID295229504"><firstname>Ashmin</firstname><surname>Karki</surname><email>ashmin.karki199@gmail.com</email><password>ashmin199</password><contact>04 20684569</contact></customer><customer customer_id="CUSID1363246020"><firstname>Mike</firstname><surname>Tyson</surname><email>miketyson123@gmail.com</email><password>miketyson123</password><contact>(04)20684569</contact></customer><customer customer_id="CUSID1306212563"><firstname>Ricardo</firstname><surname>Junior</surname><email>ricardojunior@gmail.com</email><password>ricardo</password><contact/></customer></customers>

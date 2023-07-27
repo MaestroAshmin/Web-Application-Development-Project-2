@@ -1,0 +1,1 @@
+2. mlogin - If there is error in login, need to refresh page and enter manager id and password again.

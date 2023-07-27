@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Online</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title-nav">
+        <h2 class="d-flex justify-content-center">
+          BuyOnline Registration Page
+        </h2>
+      </div>
+
+      <div class="form-container">
+        <form
+          name="register_form"
+          action="register.php"
+          onsubmit="return validateInput()"
+          method="post"
+        >
+          <div class="form-element">
+            <label for="email" class="form-label">Email Address:</label>
+            <input type="text" name="email" class="form-control" id="email" />
+          </div>
+          <div class="error" id="emailErr"></div>
+          <div class="form-element">
+            <label for="first_name" class="form-label">First Name:</label>
+            <input
+              type="text"
+              name="first_name"
+              class="form-control"
+              id="first_name"
+            />
+          </div>
+          <div class="error" id="first_nameErr"></div>
+          <div class="form-element">
+            <label for="last_name" class="form-label">Last Name:</label>
+            <input
+              type="text"
+              name="last_name"
+              class="form-control"
+              id="last_name"
+            />
+          </div>
+          <div class="error" id="last_nameErr"></div>
+          <div class="form-element">
+            <label for="password" class="form-label">Password:</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="password"
+            />
+          </div>
+          <div class="error" id="passwordErr"></div>
+          <div class="form-element">
+            <label for="password" class="form-label">Confirm Password:</label>
+            <input
+              type="password"
+              name="confirm_password"
+              class="form-control"
+              id="confirm_password"
+            />
+          </div>
+          <div class="error" id="confirm_passwordErr"></div>
+          <div class="form-element">
+            <label for="contact" class="form-label"
+              >Contact Phone: (Optional)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="contact_phone"
+              id="contact_phone"
+            />
+          </div>
+          <div class="error" id="contact_phoneErr"></div>
+          <button
+            type="submit"
+            value="submit"
+            name="submit"
+            class="btn btn-primary"
+          >
+            Register
+          </button>
+          <br />
+          <br />
+          <span id="success"></span>
+        </form>
+      </div>
+      <a href="buyonline.htm" class="d-flex justify-content-center">Home</a>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        generateSuccessMessage();
+      });
+
+      function generateSuccessMessage() {
+        var url = window.location.href;
+        var newUrl = new URL(url);
+        var search_params = new URLSearchParams(newUrl.search);
+        if (search_params.has("customer_number")) {
+          var get_customer_number = search_params.get("customer_number");
+          var buy_online_page = "buyonline.htm";
+          var successMessage =
+            "Dear User, You have successfully been registered with customer number: " +
+            get_customer_number +
+            ". Click on the link to go back to the homepage. <a href=" +
+            buy_online_page +
+            ">Click Here</a>";
+          buy_online_page;
+          printError("success", successMessage);
+        }
+      }
+      // Defining a function to display error message
+      function printError(elemId, errorMessage) {
+        document.getElementById(elemId).innerHTML = errorMessage;
+      }
+      function validateInput() {
+        var email = document.forms["register_form"]["email"].value;
+        let first_name = document.forms["register_form"]["first_name"].value;
+        var last_name = document.forms["register_form"]["last_name"].value;
+        var password = document.forms["register_form"]["password"].value;
+        var confirm_password =
+          document.forms["register_form"]["confirm_password"].value;
+        var contact_phone =
+          document.forms["register_form"]["contact_phone"].value;
+
+        if (first_name == "") {
+          first_nameErr = true;
+          printError("first_nameErr", "Please enter your First name");
+        } else {
+          printError("first_nameErr", "");
+          first_nameErr = false;
+        }
+
+        if (last_name == "") {
+          last_nameErr = true;
+          printError("last_nameErr", "Please enter your Last name");
+        } else {
+          printError("last_nameErr", "");
+          last_nameErr = false;
+        }
+
+        if (password == "") {
+          passwordErr = true;
+          printError("passwordErr", "Please enter your password");
+        } else {
+          printError("passwordErr", "");
+          passwordErr = false;
+        }
+
+        if (confirm_password == "") {
+          confirm_passwordErr = true;
+          printError("confirm_passwordErr", "Please re-type your password");
+        } else {
+          printError("confirm_passwordErr", "");
+          confirm_passwordErr = false;
+        }
+        if ((passwordErr && confirm_passwordErr) == false) {
+          if (password != confirm_password) {
+            passwordErr = true;
+            confirm_passwordErr = true;
+            printError("passwordErr", "Passwords do not match");
+            printError("confirm_passwordErr", "Passwords do not match");
+          }
+        }
+        if (email == "") {
+          emailErr = true;
+          printError("emailErr", "Please enter your email address");
+        } else {
+          // Regular expression for basic email validation
+          var regex = /^\S+@\S+\.\S+$/;
+          if (regex.test(email) === false) {
+            emailErr = true;
+            printError("emailErr", "Please enter a valid email address");
+          } else {
+            checkCustomerEmail(email);
+            console.log(emailErr);
+          }
+        }
+
+        if (contact_phone == "") {
+          contact_phoneErr = false;
+        } else {
+          var contact_regex1 = /\d\d\s\d\d\d\d\d\d\d\d/i;
+          var contact_regex2 = /\(\d\d\)\d\d\d\d\d\d\d\d/i;
+          if (
+            contact_regex1.test(contact_phone) == true ||
+            contact_regex2.test(contact_phone) == true
+          ) {
+            contact_phoneErr = false;
+            printError("contact_phoneErr", "");
+          } else {
+            contact_phoneErr = true;
+            printError(
+              "contact_phoneErr",
+              "Please use a valid Phone number format: 0d dddddddd or (0d)dddddddd"
+            );
+          }
+        }
+        // console.log(contact_phoneErr);
+        console.log(
+          emailErr,
+          first_nameErr,
+          last_nameErr,
+          passwordErr,
+          confirm_passwordErr,
+          contact_phoneErr
+        );
+        if (
+          (emailErr ||
+            first_nameErr ||
+            last_nameErr ||
+            passwordErr ||
+            confirm_passwordErr ||
+            contact_phoneErr) == true
+        ) {
+          return false;
+        }
+      }
+      // check customer.xml for unique email
+      function checkCustomerEmail(emailCheck) {
+        if (window.XMLHttpRequest) {
+          request = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+          request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        if (request.overrideMimeType) {
+          request.overrideMimeType("text/xml");
+        }
+
+        if (request) {
+          request.open("GET", "getCustomer.php", false);
+
+          request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+              var xmlDocument = request.responseXML;
+              findEmail(xmlDocument, emailCheck);
+            }
+          };
+          request.send(null);
+        }
+      }
+
+      function findEmail(doc, emailCheck) {
+        var classNode = doc.getElementsByTagName("customer");
+        for (i = 0; i < classNode.length; i++) {
+          var emailNode = classNode[i].getElementsByTagName("email");
+          var emailValue = emailNode[0].firstChild.nodeValue;
+          if (emailCheck == emailValue) {
+            emailErr = true;
+            // alert("User Already Exists");
+            printError("emailErr", "This email already exists");
+            break;
+            // return false;
+          } else {
+            emailErr = false;
+            printError("emailErr", "");
+            // return false;
+            // generateSuccessMessage();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
